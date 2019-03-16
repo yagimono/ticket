@@ -35,6 +35,10 @@ export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  created () {
+    alert(process.env.NODE_ENV)
+    alert(process.env.VUE_APP_TEST)
   }
 }
 </script>
