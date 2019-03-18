@@ -2,7 +2,7 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <div>
-      <button @click="countUp">add count</button>
+      <button @click="plusCount">add count</button>
     <div>{{currentCount}}</div>
   </div>
     <p>
@@ -35,20 +35,21 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
   },
   computed: {
-    currentCount () {
-      return this.$store.getters.currentCount
-    }
+    ...mapGetters([
+      'currentCount'
+    ])
   },
   methods: {
-    countUp () {
-      this.$store.dispatch('plusCount')
-    }
+    ...mapActions([
+      'plusCount'
+    ])
   }
 }
 </script>
