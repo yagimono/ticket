@@ -24,7 +24,7 @@ const actions = {
   login: async ({ commit }, authInfo) => {
     try {
       const { token, userId } = await Auth.login(authInfo)
-      return commit(AUTH_LOGIN, { token, userId })
+      commit(AUTH_LOGIN, { token, userId })
     } catch (err) {
       throw err
     }

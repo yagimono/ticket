@@ -111,14 +111,14 @@ export default {
       if (this.disableLoginAction) { return } // 不備があればログイン処理が実行されないようガード
       this.progress = true // ログイン処理実行中を表す
       this.error = ''
-      this.$nextTick(() => {
-        this.onlogin({ email: this.email, password: this.password })
-          .catch(err => {
-            this.error = err.message
-          })
-          .then(() => {
-            this.progress = false
-          })
+      this.$nextTick(async () => {
+        try {
+          await this.onlogin({ email: this.email, password: this.password })
+        } catch (err) {
+          this.error = err.message
+        } finally {
+          this.progress = false
+        }
       })
     }
   }
