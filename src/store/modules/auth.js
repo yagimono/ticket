@@ -1,3 +1,5 @@
+import { Auth } from '../../api'
+
 const state = {
   auth: {
     token: null, // `token`はnullで初期化
@@ -19,8 +21,13 @@ const mutations = {
 }
 
 const actions = {
-  login: ({ commit }, authInfo) => {
-      commit(AUTH_LOGIN, { token: 'あああ', userId: 'いいい' })
+  login: async ({ commit }, authInfo) => {
+    try {
+      const { token, userId } = await Auth.login(authInfo)
+      return commit(AUTH_LOGIN, { token, userId })
+    } catch (err) {
+      throw err
+    }
   },
   logout: ({ commit }) => {
     throw new Error('logout action should be implemented')

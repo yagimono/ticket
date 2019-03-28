@@ -1,10 +1,10 @@
 import client from './client'
 
 export default {
-  fetchMsg: async () => {
+  login: async (authInfo) => {
     try {
-      const res = await client.get('/foo')
-      return res.data.msg
+      const res = await client.post('/auth/login', authInfo)
+      return { token: res.data.token, userId: res.data.userId }
     } catch (err) {
       throw new Error(err.response.data.message || err.message)
     }
