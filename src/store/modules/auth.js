@@ -11,16 +11,16 @@ const AUTH_LOGOUT = 'AUTH_LOGOUT'
 
 const mutations = {
   [AUTH_LOGIN] (state, payload) {
-    throw new Error('AUTH_LOGIN mutation should be implemented')
+    state.auth = payload
   },
   [AUTH_LOGOUT] (state, payload) {
     throw new Error('AUTH_LOGOUT mutation should be implemented')
-  }  
+  }
 }
 
 const actions = {
-  login: ({ commit }) => {
-    throw new Error('login action should be implemented')
+  login: ({ commit }, authInfo) => {
+      commit(AUTH_LOGIN, { token: 'あああ', userId: 'いいい' })
   },
   logout: ({ commit }) => {
     throw new Error('logout action should be implemented')
@@ -28,8 +28,8 @@ const actions = {
 }
 
 const getters = {
-  currentCount: state => {
-    return state.count
+  currentAuth: state => {
+    return state.auth
   }
 }
 
