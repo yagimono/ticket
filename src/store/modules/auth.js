@@ -1,4 +1,4 @@
-import { Auth } from '../../api'
+import { Auth } from '@/api'
 
 const state = {
   auth: {
