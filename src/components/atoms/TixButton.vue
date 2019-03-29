@@ -26,14 +26,14 @@ export default {
 
   computed: {
     // `type`に応じてクラスを動的に生成する
-    classes() {
+    classes () {
       const cls = this.type === "text" ? "-" + this.type : ""
       return [`tix-button${cls}`]
     }
   },
 
   methods: {
-    handleClick(ev) {
+    handleClick (ev) {
       this.$emit("click", ev)
     }
   }

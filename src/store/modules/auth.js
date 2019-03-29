@@ -21,7 +21,7 @@ const mutations = {
 }
 
 const actions = {
-  login: async ({ commit }, authInfo) => {
+  async login ({ commit }, authInfo) {
     try {
       const { token, userId } = await Auth.login(authInfo)
       commit(AUTH_LOGIN, { token, userId })
@@ -29,13 +29,13 @@ const actions = {
       throw err
     }
   },
-  logout: ({ commit }) => {
+  logout ({ commit }) {
     throw new Error('logout action should be implemented')
   }
 }
 
 const getters = {
-  currentAuth: state => {
+  currentAuth (state) {
     return state.auth
   }
 }

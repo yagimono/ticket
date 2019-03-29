@@ -1,7 +1,7 @@
 import client from '@/api/client'
 
 export default {
-  login: async (authInfo) => {
+  async login (authInfo) {
     try {
       const res = await client.post('/auth/login', authInfo)
       return { token: res.data.token, userId: res.data.userId }
