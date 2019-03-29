@@ -6,6 +6,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import TixLoginForm from '@/components/molecules/TixLoginForm.vue'
 
 export default {
@@ -16,9 +17,12 @@ export default {
   },
 
   methods: {
+    ...mapActions([
+      'login'
+    ]),
     async handleLogin (authInfo) {
       try {
-        await this.$store.dispatch('login', authInfo)
+        await this.login(authInfo)
         this.$router.push({ path: '/' })
       } catch (err) {
         throw err
